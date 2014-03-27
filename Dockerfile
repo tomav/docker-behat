@@ -1,4 +1,5 @@
 FROM ubuntu:12.04
+MAINTAINER Thomas VIAL
 
 # Update and install packages
 ADD sources.list /etc/apt/sources.list
