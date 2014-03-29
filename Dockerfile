@@ -8,14 +8,23 @@ RUN apt-get update
 RUN apt-get -y install curl php5-cli php5-curl zsh git vim 
 
 # Create "behat" user with password crypted "behat"
-RUN useradd -d /home/behat -p $1$glJzCEVv$pM5atZuIqx9rbs4dReOon. -m -s /bin/zsh behat
+RUN useradd -d /home/behat -m -s /bin/zsh behat
+RUN echo "behat:behat" | chpasswd
 
 # Set "zsh" as default shell
 # RUN chsh -s /bin/zsh behat
 
+# Add "behat" to "sudoers"
+RUN echo "behat        ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
 USER behat
 WORKDIR /home/behat
 ENV HOME /home/behat
+ENV PATH $PATH:/home/behat
+
+# Behat alias
+ADD behat /home/behat/behat
+RUN chmod +x /home/behat/behat
 
 # Clone oh-my-zsh
 RUN git clone https://github.com/robbyrussell/oh-my-zsh.git /home/behat/.oh-my-zsh/

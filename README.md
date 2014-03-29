@@ -27,3 +27,4 @@ A `data` folder is mouted read/write to your current folder (the one you launche
 If you need adapt the project to your needs, clone, modify the `Dockerfile` and from the source directory, run :
 
     docker build -t behat/tvial .
+
