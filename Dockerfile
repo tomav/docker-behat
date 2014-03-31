@@ -22,7 +22,7 @@ WORKDIR /home/behat
 ENV HOME /home/behat
 ENV PATH $PATH:/home/behat
 
-# Behat alias
+# Behat alias in docker container
 ADD behat /home/behat/behat
 RUN chmod +x /home/behat/behat
 
