@@ -16,13 +16,13 @@ This repository is the source of `tvial/behat` which brings :
     docker run -t -i -h docker-behat -v $(pwd):/home/behat/data:rw tvial/behat /bin/zsh  
 
 You should see a prompt containing `[ docker-behat ]` and have `behat` command available.  
-A `data` folder is mouted read/write to your current folder (the one you launched docker-behat).  
+A `data` folder is mounted read/write to your current folder (the one you launched docker-behat).  
 
 Or, on your host, you can add the `behat()` function to your shell environnement:  
 
     function behat() { docker run -t -i -h docker-behat -v $(pwd):/home/behat/data:rw tvial/behat /bin/zsh -c "behat $@" ;}
 
-You can now call `behat` command from you host, it will be executed in your docker container.
+You can now call `behat` command from your host, it will be executed in your docker container.
 
 ## Build
 
