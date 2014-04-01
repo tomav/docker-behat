@@ -4,7 +4,7 @@ docker-behat
 This repository is the source of `tvial/behat` which brings :  
 - a basic shell with oh-my-zsh  
 - php5-cli  
-- behat  
+- behat 2.5 / mink 1.5  
 - all needed dependencies  
 
 ## Install
@@ -20,7 +20,7 @@ A `data` folder is mounted read/write to your current folder (the one you launch
 
 Or, on your host, you can add the `behat()` function to your shell environnement:  
 
-    function behat() { docker run -t -i -h docker-behat -v $(pwd):/home/behat/data:rw tvial/behat /bin/zsh -c "behat $@" ;}
+    function behat() { docker run -t -i -h docker-behat -v $(pwd):/home/behat/data:rw tvial/behat /bin/zsh -c "behat $*" ;}
 
 You can now call `behat` command from your host, it will be executed in your docker container.
 
