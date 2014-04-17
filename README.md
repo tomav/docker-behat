@@ -18,6 +18,7 @@ On your host, you can add the `behat()` function to your shell environnement:
     function behat() { docker run -t -i --rm -h docker-behat -v $(pwd):/home/behat/data:rw tvial/behat /bin/zsh -c "behat $*" ;}
 
 You can now call `behat` command from your host, it will be executed in your docker container.
+Note that the container will be removed when the behat process will end usins `--rm`.
 
 Or:
 
