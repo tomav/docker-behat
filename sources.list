@@ -1,3 +1,0 @@
-deb http://fr.archive.ubuntu.com/ubuntu/ precise main restricted
-deb http://security.ubuntu.com/ubuntu precise-security main restricted
-deb http://fr.archive.ubuntu.com/ubuntu/ precise-updates main restricted
