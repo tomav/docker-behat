@@ -1,0 +1,7 @@
+language: bash
+sudo: required
+services:
+  - docker
+script:
+  - docker build -t tvial/behat .
+  - docker run -ti -h docker-behat -v "$(pwd)/project":/root/project tvial/behat behat
