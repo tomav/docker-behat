@@ -1,6 +1,6 @@
 # docker-behat
 
-https://travis-ci.org/tomav/docker-behat.svg?branch=master
+[![Build Status](https://travis-ci.org/tomav/docker-behat.svg?branch=master)](https://travis-ci.org/tomav/docker-behat) 
 
 This repository is the source of `tvial/behat` which brings:  
 - a basic shell with oh-my-zsh  
