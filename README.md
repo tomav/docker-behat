@@ -1,7 +1,8 @@
-docker-behat
-============
+# docker-behat
 
-This repository is the source of `tvial/behat` which brings :  
+https://travis-ci.org/tomav/docker-behat.svg?branch=master
+
+This repository is the source of `tvial/behat` which brings:  
 - a basic shell with oh-my-zsh  
 - php5-cli with PHP 5.5  
 - behat 3.0 / mink 1.5  
