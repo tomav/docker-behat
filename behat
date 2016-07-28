@@ -1,2 +1,0 @@
-#!/bin/sh
-cd /home/behat/data && /home/behat/composer/bin/behat $*

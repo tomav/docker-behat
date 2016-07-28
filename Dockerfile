@@ -1,38 +1,23 @@
-FROM ubuntu:14.04
+FROM alpine
 MAINTAINER Thomas VIAL
 
 # Update and install packages
-RUN apt-get update
-RUN apt-get install -y curl zsh git vim
-RUN apt-get install -y -q php5-cli php5-curl
-
-# Create "behat" user with password crypted "behat"
-RUN useradd -d /home/behat -m -s /bin/zsh behat
-RUN echo "behat:behat" | chpasswd
-
-# Behat alias in docker container
-ADD behat /home/behat/behat
-RUN chmod +x /home/behat/behat
-
-# Create a new zsh configuration from the provided template
-ADD .zshrc /home/behat/.zshrc
-
-# Fix permissions
-RUN chown -R behat:behat /home/behat
-
-# Add "behat" to "sudoers"
-RUN echo "behat        ALL=(ALL:ALL) ALL" >> /etc/sudoers
-
-USER behat
-WORKDIR /home/behat
-ENV HOME /home/behat
-ENV PATH $PATH:/home/behat
+RUN apk update
+RUN apk add --no-cache php5-cli php5-curl php5-json php5-phar php5-openssl php5-ctype php5-dom curl zsh git && rm -rf /var/cache/apk/*
 
 # Clone oh-my-zsh
-RUN git clone https://github.com/robbyrussell/oh-my-zsh.git /home/behat/.oh-my-zsh/
+RUN git clone https://github.com/robbyrussell/oh-my-zsh.git /root/.oh-my-zsh/
 
 # Install Behat
-RUN mkdir /home/behat/composer
-ADD composer.json /home/behat/composer/composer.json
-RUN cd /home/behat/composer && curl http://getcomposer.org/installer | php
-RUN cd /home/behat/composer && php composer.phar install --prefer-source
+RUN mkdir -p /root/composer
+ADD composer.json /root/composer/composer.json
+RUN cd /root/composer && curl http://getcomposer.org/installer | php
+RUN cd /root/composer && php composer.phar install --prefer-source
+
+# Create a new zsh configuration from the provided template
+ADD .zshrc /root/.zshrc
+
+# Set Workdir and ENV
+RUN mkdir -p /root/project
+WORKDIR /root/project
+ENV PATH $PATH:/root/composer/bin/
