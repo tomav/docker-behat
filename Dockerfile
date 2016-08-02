@@ -21,3 +21,4 @@ ADD .zshrc /root/.zshrc
 RUN mkdir -p /root/project
 WORKDIR /root/project
 ENV PATH $PATH:/root/composer/bin/
+CMD ["behat"]
